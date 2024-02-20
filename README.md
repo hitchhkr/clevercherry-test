@@ -27,7 +27,7 @@ Based on the technical specification, implement a key feature or set of features
 - Implementing the booking logic with validation and error handling.
 - Commenting in the code base where functionality should be added and provide code examples
 
-* Please note, this does need to be a fully working solution with a CMS. We are looking for the chosen approach and code snippets, any functionality that is working is a bonus but not essential.
+Please note, this does not need to be a fully working solution with a CMS. We are looking for the chosen approach and code snippets, any functionality that is working is a bonus but not essential.
 
 ## 4. Code Review and Documentation
 
