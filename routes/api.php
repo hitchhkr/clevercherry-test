@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Availability;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('booking')->group(function () {
+    Route::get('/availability/{date}/{type}', [Availability::class, 'index']);
+//  Further routes would go in this group to perform further CRUD operations for bookings
 });

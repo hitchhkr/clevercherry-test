@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+    nginx:
+        build: 
+            context: ./services/nginx/
+            dockerfile: dev.Dockerfile
+        ports:
+            - "${PORT}:80"
+        links:
+            - fpm
+    fpm:
+        build: 
+            context: ./services/php/
+            dockerfile: dev.Dockerfile
+        ports:
+            - ":9000"
+
+        # seems like fpm receives the full path from nginx
+        # and tries to find the files in this dock, so it must
+        # be the same as nginx.root
+        volumes:
+            - ./:/var/www/html
+        links:
+            - mariadb
+
+    mariadb:
+        image: mariadb:latest
+        # restart: always
+        ports:
+            - "33306:3306"
+        environment:
+            MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - mariadb-data:/var/lib/mysql
+
+volumes:
+    mariadb-data:
